@@ -1,0 +1,2 @@
+# Install from the VolcHaz repository root.
+-e .[all]

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "VolcHaz"
+dynamic = ["version"]
+description = "Volcanic eruption scenarios, ERA5 preprocessing, ATLAS execution, and probabilistic hazard analysis"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+# ERA5 retrieval, preparation, and meteorological sampling.
+era5 = [
+    "xarray>=2023.1",
+    "netCDF4>=1.6",
+    "cdsapi>=0.7",
+]
+# ATLAS inputs, output reading, and SSH execution.
+atlas = [
+    "netCDF4>=1.6",
+    "paramiko>=3.0",
+]
+remote = [
+    "paramiko>=3.0",
+]
+# Geographic support and probability-map generation.
+mapping = [
+    "netCDF4>=1.6",
+    "geopandas>=0.14",
+    "shapely>=2.0",
+    "pyproj>=3.5",
+    "cartopy>=0.22",
+]
+plot = [
+    "matplotlib>=3.7",
+]
+# Complete scientific workflow, including remote ATLAS execution.
+all = [
+    "xarray>=2023.1",
+    "netCDF4>=1.6",
+    "cdsapi>=0.7",
+    "geopandas>=0.14",
+    "shapely>=2.0",
+    "pyproj>=3.5",
+    "cartopy>=0.22",
+    "paramiko>=3.0",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "volcanic_toolbox.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["volcanic_toolbox*"]
+namespaces = true
+
+

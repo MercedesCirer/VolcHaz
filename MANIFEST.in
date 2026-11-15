@@ -1,0 +1,7 @@
+include README.md
+include requirements.txt
+recursive-include docs *.md *.txt
+recursive-include examples *.py *.md *.txt *.csv
+global-exclude *.pyc
+global-exclude __pycache__
+include LICENSE
